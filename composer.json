@@ -1,54 +1,53 @@
 {
-    "name": "shimoju/wordpress-heroku",
-    "description": "WordPress on Heroku",
-    "license": "GPL-2.0",
-    "authors": [
-        {
-            "name": "Hiroshi Shimoju",
-            "email": "hiroshi.shimoju@gmail.com"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "http://wpackagist.org"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "wordpress/wordpress-ja",
-                "type": "webroot",
-                "version": "4.4",
-                "dist": {
-                    "type": "zip",
-                    "url": "https://ja.wordpress.org/wordpress-4.4-ja.zip"
-                },
-                "require": {
-                    "fancyguy/webroot-installer": "~1.1"
-                }
-            }
-        }
-    ],
-    "require": {
-        "php": "~7.0.1",
-        "ext-mbstring": "*",
-        "wordpress/wordpress-ja": "*",
-        "wpackagist-plugin/mailgun": "*"
-    },
-    "extra": {
-        "webroot-dir": "public",
-        "webroot-package": "wordpress/wordpress-ja",
-        "installer-paths": {
-            "public/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
-            "public/wp-content/themes/{$name}/": ["type:wordpress-theme"]
-        }
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "sh bin/post-install"
-        ],
-        "post-update-cmd": [
-            "sh bin/post-install"
-        ]
+  "name": "shimoju/wordpress-heroku",
+  "description": "WordPress on Heroku",
+  "license": "GPL-2.0",
+  "authors": [
+    {
+      "name": "Hiroshi Shimoju",
+      "email": "hiroshi.shimoju@gmail.com"
     }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://wpackagist.org"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "wordpress",
+        "type": "webroot",
+        "version": "4.4",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/WordPress/WordPress/archive/4.4.zip"
+        },
+        "require" : {
+          "fancyguy/webroot-installer": "~1.1"
+        }
+      }
+    }
+  ],
+  "require": {
+    "php": "~5.6.16",
+    "ext-mbstring": "*",
+    "wpackagist-plugin/mailgun": "*"
+  },
+  "extra": {
+    "webroot-dir": "public",
+    "webroot-package": "wordpress",
+    "installer-paths": {
+      "public/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+      "public/wp-content/themes/{$name}/": ["type:wordpress-theme"]
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "sh bin/post-install"
+    ],
+    "post-update-cmd": [
+      "sh bin/post-install"
+    ]
+  }
 }
